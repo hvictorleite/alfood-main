@@ -7,12 +7,13 @@ import Restaurante from './Restaurante';
 
 const ListaRestaurantes = () => {
 
+  const uriBaseApi = 'http://localhost:8000/api/v1';
   const [restaurantes, setRestaurantes] = useState<IRestaurante[]>([]);
   const [proximaPagina, setProximaPagina] = useState('');
 
   useEffect(() => {
     // obter restaurantes
-    axios.get<IPaginacao<IRestaurante>>('http://localhost:8000/api/v1/restaurantes/')
+    axios.get<IPaginacao<IRestaurante>>(uriBaseApi + '/restaurantes/')
       .then(response => {
         setRestaurantes(response.data.results);
         setProximaPagina(response.data.next);
