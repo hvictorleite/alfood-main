@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './paginas/Home';
-import AdminRestaurantes from './paginas/AdminRestaurantes';
+import AdministracaoRestaurantes from './paginas/AdminRestaurantes';
 import VitrineRestaurantes from './paginas/VitrineRestaurantes';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/restaurantes" element={<VitrineRestaurantes />} />
-      <Route path="/admin/restaurantes" element={<AdminRestaurantes />} />
+      <Route path="/admin/restaurantes" element={<AdministracaoRestaurantes />} />
     </Routes>
   );
 }
