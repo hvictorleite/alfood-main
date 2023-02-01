@@ -24,7 +24,7 @@ const FormularioRestaurante = () => {
     evento.preventDefault();
 
     if (params.id) {
-      axios.put(`${uriBaseApi} + '/restaurantes/${params.id}`, { nome: nomeRestaurante })
+      axios.put(`${uriBaseApi}/restaurantes/${params.id}/`, { nome: nomeRestaurante })
       .then(() => alert('Restaurante atualizado com sucesso'))
       .catch(error => console.log(error));
     }
