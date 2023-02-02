@@ -1,18 +1,17 @@
-import { Button, TextField } from "@mui/material";
-import axios from "axios";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import http from "../../../http";
 import IRestaurante from "../../../interfaces/IRestaurante";
 
 const FormularioRestaurante = () => {
 
-  const uriBaseApi = 'http://localhost:8000/api/v2';
   const params = useParams();
   const [nomeRestaurante, setNomeRestaurante] = useState('');
 
   useEffect(() => {
     if (params.id){
-      axios.get<IRestaurante>(`${uriBaseApi}/restaurantes/${params.id}/`)
+      http.get<IRestaurante>(`restaurantes/${params.id}/`)
         .then(response => {
           setNomeRestaurante(response.data.nome);
         })
@@ -24,12 +23,12 @@ const FormularioRestaurante = () => {
     evento.preventDefault();
 
     if (params.id) {
-      axios.put(`${uriBaseApi}/restaurantes/${params.id}/`, { nome: nomeRestaurante })
+      http.put(`restaurantes/${params.id}/`, { nome: nomeRestaurante })
       .then(() => alert('Restaurante atualizado com sucesso'))
       .catch(error => console.log(error));
     }
     else {
-      axios.post(uriBaseApi + '/restaurantes/', { nome: nomeRestaurante })
+      http.post('restaurantes/', { nome: nomeRestaurante })
       .then(() => alert('Restaurante cadastrado com sucesso'))
       .catch(error => console.log(error));
     }
@@ -39,11 +38,15 @@ const FormularioRestaurante = () => {
   }
 
   return (
-    <form onSubmit={aoSubmeterForm}>
-      <TextField value={nomeRestaurante} onChange={evento => setNomeRestaurante(evento.target.value)}
-        id="nome-restaurante" label="Nome do Restaurante" variant="standard" />
-      <Button type="submit" variant="outlined">Salvar</Button>
-    </form>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems:'center' }}>
+      <Typography component="h1" variant="h6">Formulário de Restaurantes</Typography>
+      <Box component="form" onSubmit={aoSubmeterForm}>
+        <TextField value={nomeRestaurante} onChange={evento => setNomeRestaurante(evento.target.value)}
+          id="nome-restaurante" label="Nome do Restaurante" variant="standard" fullWidth required />
+        <Button sx={{ marginTop: 1 }} type="submit" variant="outlined" fullWidth>Salvar</Button>
+      </Box>
+    </Box>
+    
   );
 }
 
