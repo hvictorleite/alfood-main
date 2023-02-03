@@ -52,7 +52,7 @@ const AdministracaoPratos = () => {
               <TableCell>{prato.tag}</TableCell>
               <TableCell><a href={prato.imagem} target='_blank' rel='noreferrer'>[Ver imagem]</a></TableCell>
               <TableCell>
-                <RouterLink to={`/admin/restaurantes/${prato.id}/`}>[editar]</RouterLink>
+                <RouterLink to={`/admin/pratos/${prato.id}/`}>[editar]</RouterLink>
               </TableCell>
               <TableCell>
                 <Button variant='outlined' color='error' onClick={() => excluir(prato)}>Deletar</Button>
