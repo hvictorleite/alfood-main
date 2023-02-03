@@ -5,6 +5,7 @@ import PaginaBaseAdmin from './paginas/Administracao/PaginaBaseAdmin';
 import Home from './paginas/Home';
 import VitrineRestaurantes from './paginas/VitrineRestaurantes';
 import AdministracaoPratos from './paginas/Administracao/Pratos/AdministracaoPratos';
+import FormularioPrato from './paginas/Administracao/Pratos/FormularioPrato';
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
         <Route path="restaurantes/:id" element={<FormularioRestaurante />} />
       
         <Route path='pratos' element={ <AdministracaoPratos /> } />
+        <Route path='pratos/novo' element={ <FormularioPrato /> } />
+        <Route path='pratos/:id' element={ <FormularioPrato /> } />
       </Route>
     </Routes>
   );
